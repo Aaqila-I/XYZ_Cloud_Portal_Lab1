@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ app_name }} - Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>{{ app_name }}</h1>
+      <p class="muted">Lab 1: Baseline (HTTP only)</p>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-area">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="card">
+      <h2>Login</h2>
+      <form method="POST" action="{{ url_for('login') }}" autocomplete="off">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" placeholder="e.g., us.alex" required>
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Your password" required>
+
+        <button type="submit">Sign in</button>
+      </form>
+      <p class="muted small">
+        This is a training portal. Do not use real passwords.
+      </p>
+    </div>
+
+    <footer class="footer">
+      <p class="muted small">XYZ Cloud Solutions — US | UK | Canada</p>
+    </footer>
+  </div>
+</body>
+</html>

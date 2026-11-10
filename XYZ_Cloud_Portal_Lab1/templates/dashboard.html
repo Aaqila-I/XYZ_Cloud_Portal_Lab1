@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ app_name }} - Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header class="header row">
+      <div>
+        <h1>{{ app_name }}</h1>
+        <p class="muted">Welcome, <strong>{{ username }}</strong> — Branch: <span class="pill">{{ branch }}</span></p>
+      </div>
+      <form method="POST" action="{{ url_for('logout') }}">
+        <button type="submit" class="secondary">Logout</button>
+      </form>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-area">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="grid">
+      <section class="card">
+        <h2>Upload a file</h2>
+        <p class="muted small">Allowed: {{ allowed_exts }} • Max size: {{ max_mb }} MB</p>
+        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+          <input type="file" name="file" required>
+          <button type="submit">Upload</button>
+        </form>
+        <p class="muted small">
+          Files are stored in <code>storage/{{ branch }}/</code> and only visible to your branch.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Your branch files ({{ files|length }})</h2>
+        {% if files %}
+          <ul class="file-list">
+            {% for f in files %}
+              <li class="file-row">
+                <span class="file-name">{{ f }}</span>
+                <a class="btn-link" href="{{ url_for('download', filename=f) }}">Download</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="muted">No files uploaded yet.</p>
+        {% endif %}
+      </section>
+    </div>
+
+    <footer class="footer">
+      <p class="muted small">
+        Lab 1 baseline: HTTP, no encryption-at-rest, no TLS yet. Lab 2 will add PKI/TLS.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

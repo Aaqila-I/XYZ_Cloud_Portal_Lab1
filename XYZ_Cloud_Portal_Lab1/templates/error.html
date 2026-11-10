@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ app_name }} - Error</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Error {{ code }}</h1>
+      <p>{{ message }}</p>
+      <p><a class="btn-link" href="{{ url_for('login') }}">Return to login</a></p>
+    </div>
+  </div>
+</body>
+</html>

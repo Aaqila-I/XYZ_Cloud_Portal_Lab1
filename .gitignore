@@ -1,0 +1,24 @@
+
+.vs/
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+
+# Private certificates and keys
+certs/
+**/certs/
+*.key
+*.pem
+*.p12
+*.pfx
+*.srl
+*.csr
+
+# Logs and local storage
+logs/
+**/logs/
+storage/*
+**/storage/*
+*.log

@@ -1,0 +1,215 @@
+/* Minimal CSS for Lab 1 (Light Green + Yellow Theme) */
+
+:root {
+    --bg: #f6fff6; /* light green */
+    --card: #ffffff; /* white */
+    --text: #1f3d1f; /* dark green */
+    --muted: #6b8f6b; /* soft green-gray */
+    --accent: #c7f36a; /* yellow-green */
+    --danger: #fff3bf; /* light yellow */
+    --warn: #ffe066; /* yellow */
+    --ok: #b6f5a3; /* light green */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: linear-gradient(120deg, #f6fff6, #fffde7);
+    color: var(--text);
+}
+
+/* Layout */
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.header {
+    margin-bottom: 18px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* Card */
+.card {
+    background: var(--card);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 880px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Typography */
+h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 6px;
+    color: var(--muted);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #cfe8cf;
+    background: #ffffff;
+    color: var(--text);
+}
+
+/* Buttons */
+button {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #2a3a00;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+    button.secondary {
+        background: #f0ffe0;
+        color: var(--text);
+        border: 1px solid #d6eeb8;
+    }
+
+    button:hover {
+        filter: brightness(1.05);
+    }
+
+/* Utility */
+.muted {
+    color: var(--muted);
+}
+
+.small {
+    font-size: 13px;
+}
+
+.footer {
+    margin-top: 18px;
+}
+
+/* Flash messages */
+.flash-area {
+    margin: 12px 0;
+    display: grid;
+    gap: 8px;
+}
+
+.flash {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+    .flash.danger {
+        border-color: #ffe066;
+        background: #fff9cc;
+    }
+
+    .flash.warning {
+        border-color: #ffd43b;
+        background: #fff3bf;
+    }
+
+    .flash.success {
+        border-color: #b6f5a3;
+        background: #eaffea;
+    }
+
+    .flash.info {
+        border-color: #c7f36a;
+        background: #f4ffcc;
+    }
+
+/* File list */
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.file-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #f9fff9;
+}
+
+.file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Links */
+.btn-link {
+    color: #7cb342;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+    .btn-link:hover {
+        text-decoration: underline;
+    }
+
+/* Pill */
+.pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #f4ffcc;
+    border: 1px solid #c7f36a;
+}
+
+/* Code */
+code {
+    background: #f0ffe0;
+    padding: 2px 6px;
+    border-radius: 8px;
+    border: 1px solid #d6eeb8;
+}
